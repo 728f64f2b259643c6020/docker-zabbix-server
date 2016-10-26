@@ -12,16 +12,25 @@ If you want to build the image with a specific version of Zabbix (3.2.0 in the s
 
     docker build --build-arg ZBX_VERSION=3.2.0 -t gcavalcante8808/zabbix-server .
 
-Usage
------
+Simple Usage
+------------
 
-To use the image, you need to have a Postgres Database installed and configured with Zabbix Database Creation Scripts already imported.
+Clone this repository (or copy the docker-compose.yml file) to your computer, and use the ** docker-compose ** to start the services:
+
+``` docker-compose up -d ```
+
+After 15 seconds, check the port 80; the user and password are the default (User: "Admin", Password: "zabbix").
+
+Other infos
+-----------
+
+If you don't want to use 'docker-compose', you will need to have a Postgres Database installed and configured with Zabbix Database Creation Scripts already imported.
 
 If you need an Postgres Image configured to operate with Zabbix, you can use my Zabbix Db Image, available at:
 
 https://github.com/gcavalcante8808/docker-zabbix-db-postgres
 
-To use this image, you would set the following variables:
+After the DB configuration, to use this image, you would set the following variables:
 
  * DB_HOST: Address or the link to the database ('db' is assumed if not provided);
  * DB_PORT: Database Port (5432 is assumed if not provided);
@@ -43,10 +52,6 @@ You can make some server adjustements by create or edit the files inside the "/c
 If you need a frontend to manage your zabbix, you can use my Zabbix FrontEnd Image, available at:
 
     https://github.com/gcavalcante8808/docker-zabbix-frontend
-
-If you need a complete set of tools to build an server from scratch, you can the follow 'Meta' Repository:
-
-    https://github.com/gcavalcante8808/docker-zabbix
 
 
 Author
