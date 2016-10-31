@@ -1,4 +1,9 @@
 version: '2'
+volumes:
+    zabbix-server-conf:
+    zabbix-server-scripts:
+    zabbix-db-data:
+
 services:
     db:
       image: gcavalcante8808/zabbix-db-postgres
@@ -7,7 +12,7 @@ services:
         POSTGRES_USER: zabbix
         POSTGRES_PASSWORD: "zabbix"
       volumes:
-        - ./pgdata:/var/lib/postgresql/data
+        - zabbix-db-data:/var/lib/postgresql/data
 
     server:
       image: gcavalcante8808/zabbix-server
@@ -19,8 +24,8 @@ services:
         DB_NAME: zabbix
         DB_TYPE: POSTGRESQL
       volumes:
-       - ./zabbix-server-conf:/usr/local/etc/zabbix_server.conf.d
-       - ./zabbix-server-scripts:/usr/local/share/zabbix/externalscripts
+       - zabbix-server-conf:/usr/local/etc/zabbix_server.conf.d
+       - zabbix-server-scripts:/usr/local/share/zabbix/externalscripts
       ports:
        - "10051:10051"
       depends_on:

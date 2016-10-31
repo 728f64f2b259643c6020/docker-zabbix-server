@@ -44,4 +44,4 @@ if [ ! -d "/tmp/firstrun" ]; then
     touch /tmp/firstrun
 fi
 
-/usr/local/sbin/zabbix_server -f -c "/usr/local/etc/zabbix_server.conf"
+exec /usr/local/bin/supervisord -c /etc/supervisord.conf
